@@ -14,7 +14,7 @@ class myApp extends StatelessWidget {
             title: Text('RUPP Student Application'),
             backgroundColor: Colors.green,
           ),
-          body: Center(
+          body: const Center(
             child: Text(
               "This is no schedule.",
               style: TextStyle(
