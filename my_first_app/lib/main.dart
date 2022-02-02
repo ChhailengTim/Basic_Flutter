@@ -15,7 +15,11 @@ class myApp extends StatelessWidget {
             backgroundColor: Colors.green,
           ),
           body: Center(
-            child: Text("This is no schedule."),
+            child: Text(
+              "This is no schedule.",
+              style: TextStyle(
+                  fontSize: 50, color: Colors.blue, fontFamily: 'Verdana'),
+            ),
           )),
     );
     //throw UnimplementedError();
