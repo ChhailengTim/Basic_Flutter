@@ -10,11 +10,14 @@ class myApp extends StatelessWidget {
     return MaterialApp(
       title: 'SETEC Studdent Application',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('RUPP Student Application'),
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('RUPP Student Application'),
+            backgroundColor: Colors.green,
+          ),
+          body: Center(
+            child: Text("This is no schedule."),
+          )),
     );
-    throw UnimplementedError();
+    //throw UnimplementedError();
   }
 }
