@@ -31,6 +31,7 @@ class myApp extends StatelessWidget {
         ),
         bottomNavigationBar: BottomAppBar(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // ignore: avoid_print
               IconButton(
