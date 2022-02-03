@@ -29,6 +29,35 @@ class myApp extends StatelessWidget {
           },
           backgroundColor: Colors.blueGrey,
         ),
+        bottomNavigationBar: BottomAppBar(
+          child: Row(
+            children: <Widget>[
+              // ignore: avoid_print
+              IconButton(
+                icon: const Icon(Icons.people),
+                onPressed: () {
+                  // ignore: avoid_print
+                  print("Icon Press");
+                },
+              ),
+              // ignore: avoid_print
+              IconButton(
+                icon: const Icon(Icons.camera),
+                onPressed: () {
+                  // ignore: avoid_print
+                  print("Icon Press");
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: () {
+                  // ignore: avoid_print
+                  print("Icon Press");
+                },
+              )
+            ],
+          ),
+        ),
       ),
     );
     //throw UnimplementedError();
