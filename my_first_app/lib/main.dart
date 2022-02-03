@@ -13,6 +13,23 @@ class myApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('RUPP Student Application'),
           backgroundColor: Colors.green,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                // ignore: avoid_print
+                print("Icon Press");
+              },
+            ),
+            // ignore: avoid_print
+            IconButton(
+              icon: const Icon(Icons.more_horiz),
+              onPressed: () {
+                // ignore: avoid_print
+                print("Icon Press");
+              },
+            ),
+          ],
         ),
         body: const Center(
           child: Text(
@@ -59,6 +76,30 @@ class myApp extends StatelessWidget {
             ],
           ),
         ),
+        persistentFooterButtons: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.accessible),
+            onPressed: () {
+              // ignore: avoid_print
+              print("Icon Press");
+            },
+          ),
+          // ignore: avoid_print
+          IconButton(
+            icon: const Icon(Icons.adjust),
+            onPressed: () {
+              // ignore: avoid_print
+              print("Icon Press");
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.archive),
+            onPressed: () {
+              // ignore: avoid_print
+              print("Icon Press");
+            },
+          )
+        ],
       ),
     );
     //throw UnimplementedError();
