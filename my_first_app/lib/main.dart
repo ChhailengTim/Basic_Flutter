@@ -8,7 +8,7 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'SETEC Studdent Application',
+        title: 'RUPP Studdent Application',
         home: DefaultTabController(
           length: 4,
           child: Scaffold(
@@ -53,12 +53,10 @@ class myApp extends StatelessWidget {
               Text("This is body tab 3"),
               Text("This is body tab 4"),
             ]),
-            //Text("This body of tab 1"),
             floatingActionButton: FloatingActionButton(
               child: const Icon(Icons.add),
               onPressed: () {
-                // ignore: avoid_print
-                print('This is floatingbutton');
+                DebugPrint('This is floatingbutton');
               },
               backgroundColor: Colors.blueGrey,
             ),
@@ -66,27 +64,22 @@ class myApp extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // ignore: avoid_print
                   IconButton(
                     icon: const Icon(Icons.people),
                     onPressed: () {
-                      // ignore: avoid_print
-                      print("Icon Press");
+                      DebugPrint("Icon Press");
                     },
                   ),
-                  // ignore: avoid_print
                   IconButton(
                     icon: const Icon(Icons.camera),
                     onPressed: () {
-                      // ignore: avoid_print
-                      print("Icon Press");
+                      DebugPrint("Icon Press");
                     },
                   ),
                   IconButton(
                     icon: const Icon(Icons.settings),
                     onPressed: () {
-                      // ignore: avoid_print
-                      print("Icon Press");
+                      DebugPrint("Icon Press");
                     },
                   )
                 ],
@@ -96,23 +89,19 @@ class myApp extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.accessible),
                 onPressed: () {
-                  // ignore: avoid_print
-                  print("Icon Press");
+                  DebugPrint("Icon Press");
                 },
               ),
-              // ignore: avoid_print
               IconButton(
                 icon: const Icon(Icons.adjust),
                 onPressed: () {
-                  // ignore: avoid_print
-                  print("Icon Press");
+                  DebugPrint("Icon Press");
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.archive),
                 onPressed: () {
-                  // ignore: avoid_print
-                  print("Icon Press");
+                  DebugPrint("Icon Press");
                 },
               )
             ],
