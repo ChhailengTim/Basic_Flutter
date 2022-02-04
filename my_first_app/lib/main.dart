@@ -31,15 +31,18 @@ class myApp extends StatelessWidget {
               ],
               bottom: const TabBar(
                 tabs: <Widget>[
-                  Tab(text: "Tab 1"),
+                  Tab(text: "Tab 1", icon: Icon(Icons.flight)),
                   Tab(
                     text: "Tab 2",
+                    icon: Icon(Icons.face),
                   ),
                   Tab(
                     text: "Tab 3",
+                    icon: Icon(Icons.run_circle),
                   ),
                   Tab(
                     text: "Tab 4",
+                    icon: Icon(Icons.work),
                   ),
                 ],
               ),
