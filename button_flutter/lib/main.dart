@@ -24,6 +24,7 @@ Widget myButton() {
     child: const Text("Click me!"),
     elevation: 10.0,
     color: Colors.red,
+    splashColor: Colors.yellow,
     onPressed: () {},
   );
 }
