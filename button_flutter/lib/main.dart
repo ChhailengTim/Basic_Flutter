@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: const Text("RUPP"),
             ),
-            body: Row(
+            body:
+                /*
+            Row(
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -27,6 +29,14 @@ class MyApp extends StatelessWidget {
                 Row(
                   children: [myButton(), myButton2()],
                 )
+              ],
+            )));
+            */
+                Row(
+              children: <Widget>[
+                Image.asset("images/flutter.png", width: 100.0),
+                Image.asset("images/flutter.png", width: 100.0),
+                Image.asset("images/flutter.png", width: 100.0),
               ],
             )));
   }
