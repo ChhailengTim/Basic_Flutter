@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               ],
             )));
             */
-                Row(
+                Column(
               children: <Widget>[
                 Image.asset("images/flutter.png", width: 100.0),
                 Image.asset("images/flutter.png", width: 100.0),
