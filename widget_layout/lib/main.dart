@@ -13,8 +13,30 @@ class MyApp extends StatelessWidget {
               title: const Text('RUPP'),
             ),
             body: SafeArea(
-              child: Container(
-                color: Colors.red,
+              child: Row(
+                children: <Widget>[
+                  myContainer(Colors.pink, Icons.alarm),
+                  //myContainer(Colors.blueGrey, Icons.play_arrow)
+                  Expanded(
+                      child: Column(
+                    children: <Widget>[
+                      myContainer(Colors.blue, Icons.play_arrow),
+                      myContainer(Colors.green, Icons.help),
+                    ],
+                  ))
+                ],
+              ),
+            )));
+  }
+
+  Widget myContainer(Color mycol, IconData myIcon) {
+    return Expanded(
+        child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              color: mycol,
+              child: Center(
+                child: Icon(myIcon),
               ),
             )));
   }
