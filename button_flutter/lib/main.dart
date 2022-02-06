@@ -11,11 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: const Text("RUPP"),
-      ),
-      body: myButton(),
-    ));
+            appBar: AppBar(
+              title: const Text("RUPP"),
+            ),
+            body: Row(
+              children: <Widget>[myButton(), myButton2()],
+            )));
   }
 }
 
@@ -25,6 +26,19 @@ Widget myButton() {
     elevation: 10.0,
     color: Colors.red,
     splashColor: Colors.yellow,
-    onPressed: () {},
+    onPressed: () {
+      debugPrint("Click me!");
+    },
+  );
+}
+
+Widget myButton2() {
+  return FlatButton(
+    child: const Text("Click me!"),
+    color: Colors.yellow,
+    splashColor: Colors.yellow,
+    onPressed: () {
+      debugPrint("Click me!");
+    },
   );
 }
