@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
               ],
             )));
             */
-                Column(
+                Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Image.asset("images/flutter.png", width: 100.0),
                 Image.asset("images/flutter.png", width: 100.0),
