@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,12 +13,25 @@ class MyApp extends StatelessWidget {
               title: const Text("RUPP"),
             ),
             body: Row(
-              children: <Widget>[myButton(), myButton2()],
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Image.asset(
+                      "images/flutter.png",
+                      width: 100.0,
+                    )
+                  ],
+                ),
+                Row(
+                  children: [myButton(), myButton2()],
+                )
+              ],
             )));
   }
 }
 
 Widget myButton() {
+  // ignore: deprecated_member_use
   return RaisedButton(
     child: const Text("Click me!"),
     elevation: 10.0,
