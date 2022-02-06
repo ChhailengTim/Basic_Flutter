@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Image.asset(
                       "images/flutter.png",
-                      width: 100.0,
+                      width: 44.0,
                     )
                   ],
                 ),
