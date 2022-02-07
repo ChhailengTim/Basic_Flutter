@@ -11,17 +11,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.play_circle_filled)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
-          ],
+        bottomNavigationBar: BottomAppBar(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.play_circle_filled)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
