@@ -17,20 +17,27 @@ class MyApp extends StatelessWidget {
             icon: const Icon(Icons.home),
             onPressed: () {},
           ),
-          title: const Text("Hello Flutter App CLT"),
+          title: const Text("Hello Flutter App."),
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.settings),
             ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt))
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.camera_alt_outlined),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.more_horiz),
+            ),
           ],
           bottom: const PreferredSize(
             preferredSize: Size.fromHeight(20.0),
             child: Padding(
-              padding: EdgeInsets.all(9.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
-                "Proud of my self!",
+                "Well, it is cool, Right?",
                 style: TextStyle(color: Colors.white),
               ),
             ),
