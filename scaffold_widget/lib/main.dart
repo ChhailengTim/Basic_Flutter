@@ -9,7 +9,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("RUPP Application")),
+        appBar: AppBar(
+          title: const Text("Rupp Application"),
+        ),
         drawer: const Drawer(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
@@ -17,20 +19,19 @@ class MyApp extends StatelessWidget {
         ),
         body: Container(
           alignment: Alignment.center,
-          child: Image.network(
-              "https://i.ytimg.com/vi/LAkKvMtlRC4/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAhNhPjZCQjZrQ730-hz1iYblBBRA"),
+          child: Image.network("http://bit.ly/2IGluzb"),
         ),
         bottomNavigationBar: BottomAppBar(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
+            children: [
               IconButton(
-                icon: const Icon(Icons.home),
                 onPressed: () {},
+                icon: const Icon(Icons.home),
               ),
               IconButton(
-                icon: const Icon(Icons.menu),
                 onPressed: () {},
+                icon: const Icon(Icons.menu),
               )
             ],
           ),
