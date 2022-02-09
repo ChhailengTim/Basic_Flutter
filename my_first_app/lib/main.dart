@@ -18,16 +18,6 @@ class MyApp extends StatelessWidget {
             icon: const Icon(Icons.home),
           ),
           title: const Text("Hello Flutter App"),
-          bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(20.0),
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "It is cool, Right?",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ),
         ),
         body: Column(
           children: [
@@ -164,34 +154,6 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ],
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              DrawerHeader(child: Image.network("http://bit.ly/2IGluzb")),
-              const ListTile(
-                leading: Icon(Icons.home),
-                title: Text("Home"),
-                trailing: Icon(Icons.arrow_forward_ios),
-              ),
-              const ListTile(
-                leading: Icon(Icons.emoji_emotions),
-                title: Text("About us"),
-                trailing: Icon(Icons.arrow_forward_ios),
-              )
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.play_circle_filled)),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
-            ],
-          ),
         ),
       ),
     );
