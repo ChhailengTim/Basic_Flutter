@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'អក្សរខ្មែរ',
-            style: TextStyle(fontFamily: "Khmer Moul"),
+            style: TextStyle(fontFamily: "Khmer Moul", color: Colors.black),
           ),
         ),
       ),
