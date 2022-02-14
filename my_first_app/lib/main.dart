@@ -12,18 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('សួស្តី!'),
-        ),
-        body: Container(
-          alignment: Alignment.center,
-          child: const Text(
-            "ភាសាខ្មែរ",
-            style: TextStyle(
-                fontSize: 50.0,
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.underline),
+          title: const Text(
+            'អក្សរខ្មែរ',
+            style: TextStyle(fontFamily: "Khmer Moul"),
           ),
         ),
       ),
