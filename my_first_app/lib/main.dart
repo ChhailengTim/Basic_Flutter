@@ -13,27 +13,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(title: const Text("Keybord Input")),
         body: Container(
-          width: 200.0,
-          height: 200.0,
+          padding: EdgeInsets.only(left: 20.0, right: 20.0),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.pink,
-                Colors.red,
-                Colors.orange,
-              ],
+            borderRadius: BorderRadius.circular(20.0),
+            color: Colors.pink.withOpacity(0.5),
+          ),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              labelStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+              hintText: "Enter your email",
+              hintStyle: TextStyle(fontSize: 15.0, color: Colors.white54),
+              labelText: "Email",
+              border: InputBorder.none,
             ),
-            color: Colors.deepPurple,
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.red.withOpacity(0.5),
-                  offset: const Offset(15.0, 15.0),
-                  blurRadius: 10.0),
-            ],
+            obscureText: false,
           ),
         ),
       ),
