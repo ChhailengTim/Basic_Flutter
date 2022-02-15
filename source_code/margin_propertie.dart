@@ -12,11 +12,17 @@ MaterialApp(
             vertical: 10.0,
             horizontal: 50.0,
           ),
-margin: const EdgeInsets.fromLTRB(
+          margin: const EdgeInsets.fromLTRB(
             20.0,
             30.0,
             40.0,
             50.0,
+          ),
+          margin: const EdgeInsets.only(
+            left: 20.0,
+            bottom: 40.0,
+            right: 40.0,
+            top: 50.0,
           ),
         ),
       ),
