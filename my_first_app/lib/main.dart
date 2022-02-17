@@ -1,3 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,31 +19,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Hello"),
+          title: const Text("ListView Example"),
         ),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              Icon(
-                Icons.camera,
-                size: 200,
-              ),
-              Icon(
-                Icons.account_box,
-                size: 230.0,
-              ),
-              Icon(
-                Icons.place,
-                size: 200.0,
-              ),
-              Icon(
-                Icons.info,
-                size: 250.0,
-              ),
-            ],
-          ),
+        body: ListView(
+          children: const [
+            ListTile(
+              leading: Icon(Icons.wb_sunny),
+              title: Text("Sunny"),
+              subtitle: Text("The sun is shinning"),
+              trailing: Icon(Icons.keyboard_arrow_right),
+            ),
+            ListTile(
+              leading: Icon(Icons.wb_cloudy),
+              title: Text("Cloudy"),
+              subtitle: Text("The sky is cloudy"),
+              trailing: Icon(Icons.keyboard_arrow_right),
+            ),
+          ],
         ),
       ),
     );
