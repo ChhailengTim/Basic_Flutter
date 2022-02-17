@@ -1,19 +1,27 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+class Fruit {
+  String title;
+  String imageUrl;
+
+  Fruit({required this.title, required this.imageUrl});
+}
+
+List<Fruit> fruits = [
+  Fruit(title: "Coconut", imageUrl: "images/coconut.jpg"),
+  Fruit(title: "Apple", imageUrl: "image/apple.jpg")
+];
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   get child => null;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,21 +29,34 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("ListView Example"),
         ),
-        body: ListView(
-          children: const [
-            ListTile(
-              leading: Icon(Icons.wb_sunny),
-              title: Text("Sunny"),
-              subtitle: Text("The sun is shinning"),
-              trailing: Icon(Icons.keyboard_arrow_right),
-            ),
-            ListTile(
-              leading: Icon(Icons.wb_cloudy),
-              title: Text("Cloudy"),
-              subtitle: Text("The sky is cloudy"),
-              trailing: Icon(Icons.keyboard_arrow_right),
-            ),
-          ],
+        body: ListView.builder(
+          itemCount: fruits.length,
+          itemBuilder: (context, index) {
+            return Container(
+              color: Colors.grey[200],
+              child: ListView.builder(
+                itemCount: fruits.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(bottom: 10.0),
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 100.0,
+                          height: 100.0,
+                          child: Image.asset(
+                            fruits[index].imageUrl,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );
