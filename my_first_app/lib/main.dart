@@ -6,17 +6,6 @@ void main() {
   runApp(const MyApp());
 }
 
-class Fruit {
-  String? title;
-  String? imageUrl;
-  Fruit({this.title, this.imageUrl});
-}
-
-List<Fruit> fruits = [
-  Fruit(title: "Coconut", imageUrl: "images/apple.jpg"),
-  Fruit(title: "Apple", imageUrl: "images/coconut.jpg")
-];
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -25,33 +14,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text("ListView Example"),
+        appBar: AppBar(
+          title: const Text("ListView Example"),
+        ),
+        body: GridView.builder(
+          itemCount: 10,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 20,
           ),
-          body: ListView.builder(
-            itemCount: fruits.length,
-            itemBuilder: (context, index) {
-              if (index % 2 == 0) {
-                return Container(
-                  color: Colors.yellow,
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    fruits[index].title!,
-                    style: const TextStyle(fontSize: 25.0),
-                  ),
-                );
-              } else {
-                return Container(
-                  color: Colors.lightBlue,
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    fruits[index].title!,
-                    style: const TextStyle(fontSize: 25.0),
-                  ),
-                );
-              }
-            },
-          )),
+          itemBuilder: (context, index) {
+            return Container(
+              alignment: Alignment.center,
+              color: Colors.pink[100 * (index % 9)],
+              child: Text("gride item $index"),
+            );
+          },
+        ),
+      ),
     );
   }
 }
