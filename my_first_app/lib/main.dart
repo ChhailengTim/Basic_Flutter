@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             return Container(
               alignment: Alignment.center,
               color: Colors.pink[100 * (index % 9)],
-              child: Text("gride item $index"),
+              child: Text('grid item $index'),
             );
           },
         ),
