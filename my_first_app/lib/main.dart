@@ -14,16 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text("PageView Demo"),
-          ),
-          body: PageView.builder(
-            itemBuilder: (context, position) {
-              return Container(
-                color: position % 2 == 0 ? Colors.pink : Colors.cyan,
-              );
-            },
-          )),
+        appBar: AppBar(
+          title: const Text("Hello Flutter"),
+        ),
+        body: PageView(
+          children: const [
+            Icon(Icons.home),
+            Icon(Icons.people),
+          ],
+        ),
+      ),
     );
   }
 }
