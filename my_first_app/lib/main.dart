@@ -14,32 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SliverAppBar(
-          leading: const Icon(Icons.face),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.settings),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.person),
-            ),
-          ],
-          pinned: true,
-          title: const Text("Sliver AppBar Example"),
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.pink, Colors.indigo],
-              ),
-            ),
+          appBar: AppBar(
+            title: const Text("PageView Demo"),
           ),
-          expandedHeight: 80,
-        ),
-      ),
+          body: PageView.builder(
+            itemBuilder: (context, position) {
+              return Container(
+                color: position % 2 == 0 ? Colors.pink : Colors.cyan,
+              );
+            },
+          )),
     );
   }
 }
