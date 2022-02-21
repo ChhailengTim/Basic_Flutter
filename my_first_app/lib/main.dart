@@ -3,27 +3,64 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
-  //get child => null;
+  PageController pageController = PageController(
+    initialPage: 0,
+  );
+  int pageChange = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Hello Flutter"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                pageController.animateToPage(pageChange--,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.bounceInOut);
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
+            IconButton(
+              onPressed: () {
+                pageController.animateToPage(2,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.bounceInOut);
+              },
+              icon: const Icon(Icons.arrow_forward_ios),
+            ),
+          ],
         ),
         body: PageView(
-          children: const [
-            Icon(Icons.home),
-            Icon(Icons.people),
+          pageSnapping: true,
+          controller: pageController,
+          onPageChanged: (index) {
+            setState(() {
+              pageChange = index;
+            });
+            print(pageChange);
+          },
+          children: [
+            Container(
+              color: Colors.red,
+            ),
+            Container(
+              color: Colors.black,
+            ),
           ],
         ),
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
