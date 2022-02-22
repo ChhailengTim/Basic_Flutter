@@ -1,58 +1,47 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-
-  PageController pageController = PageController(
-    initialPage: 0,
-  );
-  int pageChange = 0;
-
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Page View Demo"),
-          actions: [
-            IconButton(
-              onPressed: () {
-                pageController.animateToPage(pageChange--,
-                    duration: const Duration(milliseconds: 250),
-                    curve: Curves.bounceInOut);
-              },
-              icon: const Icon(Icons.arrow_back_ios),
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              leading: const Icon(Icons.face),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.settings),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.person),
+                ),
+              ],
+              pinned: false,
+              title: const Text("Scroll View AppBar"),
+              floating: true,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Colors.pink,
+                      Colors.indigo,
+                    ],
+                  ),
+                ),
+              ),
+              expandedHeight: 80,
             ),
-            IconButton(
-              onPressed: () {
-                pageController.animateToPage(2,
-                    duration: const Duration(milliseconds: 250),
-                    curve: Curves.bounceInOut);
-              },
-              icon: const Icon(Icons.arrow_forward_ios),
-            ),
-          ],
-        ),
-        body: PageView(
-          pageSnapping: true,
-          controller: pageController,
-          onPageChanged: (index) {
-            setState(() {
-              pageChange = index;
-            });
-          },
-          children: [
-            Image.network(
-                "https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg"),
-            Image.network(
-                "https://image.kkday.com/v2/image/get/s1.kkday.com/product_19604/20180705081431_UxgDg/jpg"),
-            Image.network(
-                "https://www.wallpapertip.com/wmimgs/35-354301_marvel-super-war-ios.jpg"),
           ],
         ),
       ),
