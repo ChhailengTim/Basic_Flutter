@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Hello Flutter"),
+          title: const Text("Page View Demo"),
           actions: [
             IconButton(
               onPressed: () {
@@ -47,15 +45,14 @@ class MyApp extends StatelessWidget {
             setState(() {
               pageChange = index;
             });
-            print(pageChange);
           },
           children: [
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.black,
-            ),
+            Image.network(
+                "https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg"),
+            Image.network(
+                "https://image.kkday.com/v2/image/get/s1.kkday.com/product_19604/20180705081431_UxgDg/jpg"),
+            Image.network(
+                "https://www.wallpapertip.com/wmimgs/35-354301_marvel-super-war-ios.jpg"),
           ],
         ),
       ),
