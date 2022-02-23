@@ -14,24 +14,39 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: CustomScrollView(
-          slivers: [
+          slivers: <Widget>[
             SliverAppBar(
-              title: const Text("Grid View Example"),
+              title: const Text("SliverAppBar at the Top"),
               pinned: false,
               floating: true,
               flexibleSpace: Container(color: Colors.pink),
-              expandedHeight: 80,
+              expandedHeight: 70,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.face),
+                      title: Text("Item #$index"),
+                      subtitle: Text("Awesome item $index"),
+                      trailing: const Icon(Icons.navigate_next),
+                    ),
+                  );
+                },
+                childCount: 10,
+              ),
             ),
             SliverGrid(
               delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+                (BuildContext context, index) {
                   return Container(
                     alignment: Alignment.center,
                     color: Colors.pink[100 * (index % 9)],
-                    child: Text("grid view $index"),
+                    child: Text("grid item $index"),
                   );
                 },
-                childCount: 50,
+                childCount: 15,
               ),
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200,
@@ -39,6 +54,15 @@ class MyApp extends StatelessWidget {
                 crossAxisSpacing: 10.0,
                 childAspectRatio: 4.0,
               ),
+            ),
+            SliverAppBar(
+              title: const Text("SliverAppBar at the button"),
+              pinned: false,
+              floating: true,
+              flexibleSpace: Container(
+                color: Colors.indigo,
+              ),
+              expandedHeight: 80,
             ),
           ],
         ),
