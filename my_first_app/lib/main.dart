@@ -16,46 +16,28 @@ class MyApp extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              leading: const Icon(Icons.face),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.search),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.people),
-                ),
-              ],
-              title: const Text("Sliver AppBar Example"),
+              title: const Text("Grid View Example"),
               pinned: false,
               floating: true,
-              flexibleSpace: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Colors.pink,
-                      Colors.indigo,
-                    ],
-                  ),
-                ),
-              ),
+              flexibleSpace: Container(color: Colors.pink),
               expandedHeight: 80,
             ),
-            SliverList(
+            SliverGrid(
               delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.face),
-                      title: Text("Item #$index"),
-                      subtitle: Text("Awsome item $index"),
-                      trailing: const Icon(Icons.navigate_next),
-                    ),
+                (BuildContext context, int index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.pink[100 * (index % 9)],
+                    child: Text("grid view $index"),
                   );
                 },
+                childCount: 50,
+              ),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 4.0,
               ),
             ),
           ],
