@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -12,78 +13,57 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        bottomNavigationBar: Dashboard(),
-      ),
-    );
-  }
-}
-
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
-
-  @override
-  State<Dashboard> createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashboard> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            if (_selectedIndex == 0)
-              // you can call custom widget here
-              Column(
-                children: const [
-                  Text("0"),
-                ],
-              )
-            else if (_selectedIndex == 1)
-              Column(
-                children: const [
-                  Text("1"),
-                ],
-              )
-            else
-              Column(
-                children: const [
-                  Text("2"),
-                ],
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: const Text("SliverAppBar Example"),
+              pinned: false,
+              floating: true,
+              flexibleSpace: Container(color: Colors.pink),
+              expandedHeight: 80,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.face),
+                      title: Text("Items #$index"),
+                      subtitle: Text("Awesome item $index"),
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                    ),
+                  );
+                },
+                childCount: 10,
               ),
+            ),
+            SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    color: Colors.pink[100 * (index % 9)],
+                    child: Text("grid item $index"),
+                  );
+                },
+                childCount: 20,
+              ),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                childAspectRatio: 4.0,
+              ),
+            ),
+            SliverAppBar(
+              title: const Text("SliverAppBar at the buttom"),
+              pinned: false,
+              floating: true,
+              flexibleSpace: Container(color: Colors.indigo),
+              expandedHeight: 80,
+            ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.headphones),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
       ),
     );
   }
