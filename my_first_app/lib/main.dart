@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: CustomScrollView(
-          slivers: <Widget>[
+          slivers: [
             SliverAppBar(
-              title: const Text("SliverAppBar at the Top"),
+              title: const Text("SliverAppBar Example"),
               pinned: false,
               floating: true,
               flexibleSpace: Container(color: Colors.pink),
-              expandedHeight: 70,
+              expandedHeight: 80,
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       leading: const Icon(Icons.face),
-                      title: Text("Item #$index"),
+                      title: Text("Items #$index"),
                       subtitle: Text("Awesome item $index"),
-                      trailing: const Icon(Icons.navigate_next),
+                      trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                   );
                 },
@@ -39,14 +39,14 @@ class MyApp extends StatelessWidget {
             ),
             SliverGrid(
               delegate: SliverChildBuilderDelegate(
-                (BuildContext context, index) {
+                (BuildContext context, int index) {
                   return Container(
                     alignment: Alignment.center,
                     color: Colors.pink[100 * (index % 9)],
                     child: Text("grid item $index"),
                   );
                 },
-                childCount: 15,
+                childCount: 20,
               ),
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: 200,
@@ -56,12 +56,10 @@ class MyApp extends StatelessWidget {
               ),
             ),
             SliverAppBar(
-              title: const Text("SliverAppBar at the button"),
+              title: const Text("SliverAppBar at the buttom"),
               pinned: false,
               floating: true,
-              flexibleSpace: Container(
-                color: Colors.indigo,
-              ),
+              flexibleSpace: Container(color: Colors.indigo),
               expandedHeight: 80,
             ),
           ],
