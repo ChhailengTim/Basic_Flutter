@@ -4,68 +4,58 @@ void main() {
   runApp(const MyApp());
 }
 
-// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              title: const Text("SliverAppBar at the Top"),
-              pinned: false,
-              floating: true,
-              flexibleSpace: Container(color: Colors.pink),
-              expandedHeight: 70,
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.face),
-                      title: Text("Item #$index"),
-                      subtitle: Text("Awesome item $index"),
-                      trailing: const Icon(Icons.navigate_next),
-                    ),
-                  );
-                },
-                childCount: 10,
-              ),
-            ),
-            SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    color: Colors.pink[100 * (index % 9)],
-                    child: Text("grid item $index"),
-                  );
-                },
-                childCount: 15,
-              ),
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 4.0,
-              ),
-            ),
-            SliverAppBar(
-              title: const Text("SliverAppBar at the button"),
-              pinned: false,
-              floating: true,
-              flexibleSpace: Container(
-                color: Colors.indigo,
-              ),
-              expandedHeight: 80,
-            ),
-          ],
-        ),
+    return const MaterialApp(
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _MainPage();
+}
+
+class _MainPage extends State<MainPage> {
+  int _currentIndex = 0;
+  final _page = [
+    Image.network(
+        "https://dynaimage.cdn.cnn.com/cnn/digital-images/org/9051c6b3-e968-4c0e-b431-5bfeb0ed11e6.png"),
+    Image.network("https://i.ytimg.com/vi/eG85dewfdL8/maxresdefault.jpg"),
+  ];
+  //List<Widget> _widgetOption = <Widget>[];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: _page.elementAt(_currentIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "News",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Hot",
+          ),
+        ],
       ),
     );
   }
