@@ -9,53 +9,145 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MainPage(),
-    );
-  }
-}
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Column(
+          children: [
+            ///box1
+            Expanded(
+              flex: 4,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: Colors.green,
+                              child:
+                                  const Center(child: Icon(Icons.app_blocking)),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: Container(
+                              color: Colors.orange,
+                              child: const Center(
+                                  child: Icon(Icons.sentiment_neutral)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.blueAccent,
+                            child:
+                                const Center(child: Icon(Icons.app_blocking)),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  color: Colors.white,
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        flex: 3,
+                                        child: Container(
+                                          color: Colors.yellow,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          color: Colors.orange[900],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        color: Colors.brown,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Container(
+                                        color: Colors.indigo[900],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+            ///box2
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.blue,
+                child: const Center(child: Icon(Icons.app_blocking)),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
 
-  @override
-  State<StatefulWidget> createState() => _MainPage();
-}
-
-class _MainPage extends State<MainPage> {
-  int _currentIndex = 0;
-  final _page = [
-    Image.network(
-        "https://dynaimage.cdn.cnn.com/cnn/digital-images/org/9051c6b3-e968-4c0e-b431-5bfeb0ed11e6.png"),
-    Image.network("https://i.ytimg.com/vi/eG85dewfdL8/maxresdefault.jpg"),
-  ];
-  //List<Widget> _widgetOption = <Widget>[];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _page.elementAt(_currentIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "News",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Hot",
-          ),
-        ],
+            ///box3
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.yellow,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
