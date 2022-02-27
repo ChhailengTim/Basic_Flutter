@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
             "ចំរៀងខ្មែរ",
             style: TextStyle(fontFamily: 'Khmer Moul'),
           ),
+          actions: const [
+            Icon(Icons.search),
+          ],
         ),
         body: ListView(
           children: [
@@ -29,12 +32,21 @@ class MyApp extends StatelessWidget {
               trailing: const Icon(Icons.more_vert),
             ),
             ListTile(
-              leading: Image.network(
-                  "https://www.khmersongs.net/data/upload/1538474073.jpg"),
-              title: const Text("So Nita"),
-              subtitle: const Text("New Album 2022"),
-              trailing: const Icon(Icons.more_vert),
-            ),
+                leading: Image.network(
+                    "https://www.khmersongs.net/data/upload/1538474073.jpg"),
+                title: const Text("So Nita"),
+                subtitle: const Text("New Album 2022"),
+                trailing: Wrap(
+                  //spacing: 12,
+                  children: [
+                    Column(
+                      children: const [
+                        Icon(Icons.more_vert),
+                        Icon(Icons.alarm),
+                      ],
+                    ),
+                  ],
+                )),
             ListTile(
               leading: Image.network(
                   "https://www.khmersongs.net/data/upload/1542786926.jpg"),
