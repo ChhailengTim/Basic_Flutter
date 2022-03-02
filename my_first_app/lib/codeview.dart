@@ -225,9 +225,9 @@ class _HomeState extends State<Home> {
               margin: EdgeInsets.only(top: 14),
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: new List.generate(10, (int index) {
+                children: List.generate(10, (int index) {
                   print(index);
-                  return new Card(
+                  return Card(
                       margin: EdgeInsets.all(10),
                       shadowColor: Colors.black,
                       elevation: 2,
@@ -242,7 +242,7 @@ class _HomeState extends State<Home> {
                               child: Container(
                                   width: 150,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                           topLeft: Radius.circular(15),
                                           topRight: Radius.circular(15)),
                                       image: DecorationImage(
@@ -254,7 +254,7 @@ class _HomeState extends State<Home> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               top: 8, right: 85),
                                           child: CircleAvatar(
                                             radius: 16,
