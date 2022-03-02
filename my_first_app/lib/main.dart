@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Home(),
+        body: const Home(),
       ),
     );
   }
