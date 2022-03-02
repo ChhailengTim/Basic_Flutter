@@ -1,750 +1,182 @@
-import 'package:flutter/material.dart';
+// // import 'package:bttom_sheet/actionbtn.dart';
+// // import 'package:bttom_sheet/feedbox.dart';
+// // import 'package:bttom_sheet/storytile.dart';
+// import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+// void main() {
+//   runApp(MyApp());
+// }
 
-  @override
-  _HomeState createState() => _HomeState();
-}
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       //i'm going to disable the debug banner
+//       debugShowCheckedModeBanner: false,
+//       home: HomePage(),
+//     );
+//   }
+// }
 
-class _HomeState extends State<Home> {
-  // ! Declaration variable
-  var index = 0;
-  var color = Colors.blue;
-  late TabController myControler;
-  var like = Colors.black;
-  var like2 = Colors.black;
-  var likeComent = Colors.black;
-  var likenumber = 45;
-  var likenumber2 = 117;
-  var likeGroups = 22;
-  // ! ==========================
+// class HomePage extends StatefulWidget {
+//   @override
+//   _HomePageState createState() => _HomePageState();
+// }
 
-  // ?  Storyyyy ============================
-  List Story = [
-    {
-      "imgAccount": "images/profil.jpeg",
-      "imgbackground": "images/profil.jpeg",
-      "name": "Create story",
-      "Coloros": Colors.white
-    },
-    {
-      "imgAccount": "images/profil2.jpg",
-      "imgbackground": "images/profil2.jpg",
-      "name": "Zakaria Blm",
-      "Coloros": Colors.blue[100]
-    },
-    {
-      "imgAccount": "images/profil3.jpg",
-      "imgbackground": "images/profil3.jpg",
-      "name": "Mohamed El Amine",
-      "Coloros": Colors.red[100]
-    },
-    {
-      "imgAccount": "images/profil6.jpg",
-      "imgbackground": "images/profil6.jpg",
-      "name": "Abde Benkoula",
-      "Coloros": Colors.green[100]
-    },
-    {
-      "imgAccount": "images/profil2.jpg",
-      "imgbackground": "images/profil2.jpg",
-      "name": "Zakazila 27",
-      "Coloros": Colors.purple[100]
-    },
-    {
-      "imgAccount": "images/profil4.jpg",
-      "imgbackground": "images/profil4.jpg",
-      "name": "Snouci Elby",
-      "Coloros": Colors.brown[100]
-    },
-    {
-      "imgAccount": "images/profil5.jpg",
-      "imgbackground": "images/profil5.jpg",
-      "name": "Bassem Bel",
-      "Coloros": Colors.blue[100]
-    },
-    {
-      "imgAccount": "images/profil7.jpg",
-      "imgbackground": "images/profil7.jpg",
-      "name": "Nadir Larbi",
-      "Coloros": Colors.orange[100]
-    },
-    {
-      "imgAccount": "images/profil3.jpg",
-      "imgbackground": "images/profil3.jpg",
-      "name": "Bk Ness",
-      "Coloros": Colors.red[100]
-    },
-    {
-      "imgAccount": "images/profil.jpeg",
-      "imgbackground": "images/profil.jpeg",
-      "name": "Hmida Mosta",
-      "Coloros": Colors.yellow[100]
-    },
-  ];
+// class _HomePageState extends State<HomePage> {
+//   //Let's add the color code for our project
+//   Color bgBlack = Color(0xFF1a1a1a);
+//   Color mainBlack = Color(0xFF262626);
+//   Color fbBlue = Color(0xFF2D88FF);
+//   Color mainGrey = Color(0xFF505050);
 
-  // ? ===========================
+//   //Here I'm going to import a list of images that we will use for the profile picture and the storys
+//   List<String> avatarUrl = [
+//     "https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+//     "https://images.unsplash.com/photo-1457449940276-e8deed18bfff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+//     "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80",
+//     "https://images.unsplash.com/photo-1525879000488-bff3b1c387cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+//   ];
+//   List<String> storyUrl = [
+//     "https://images.unsplash.com/photo-1600055882386-5d18b02a0d51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=621&q=80",
+//     "https://images.unsplash.com/photo-1600174297956-c6d4d9998f14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+//     "https://images.unsplash.com/photo-1600008646149-eb8835bd979d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80",
+//     "https://images.unsplash.com/photo-1502920313556-c0bbbcd00403?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80",
+//   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey[350],
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 140,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    //color: Colors.green,
-                    margin: EdgeInsets.only(top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 15),
-                          child: CircleAvatar(
-                            radius: 25,
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundImage: AssetImage('images/profil.jpeg'),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.all(8),
-                            padding: EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                              left: 20,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.black),
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                            child: Text(
-                              "What's on your mind ? ",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-                        )
-                        //TextFormField(),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    height: 2,
-                    color: Colors.black54,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.camera),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "Live",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Container(
-                          width: 1,
-                          height: 25,
-                          color: Colors.grey,
-                        ),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.photo),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "Photo",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Container(
-                          width: 1,
-                          height: 25,
-                          color: Colors.grey,
-                        ),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.video_call),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "Room",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: 270,
-              margin: EdgeInsets.only(top: 14),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: List.generate(10, (int index) {
-                  print(index);
-                  return Card(
-                      margin: EdgeInsets.all(10),
-                      shadowColor: Colors.black,
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      color: Story[index]['Coloros'],
-                      child: Column(
-                        children: [
-                          Expanded(
-                              flex: 4,
-                              child: Container(
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(15),
-                                          topRight: Radius.circular(15)),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "${Story[index]['imgbackground']}"),
-                                          fit: BoxFit.cover)),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                          margin: const EdgeInsets.only(
-                                              top: 8, right: 85),
-                                          child: CircleAvatar(
-                                            radius: 16,
-                                            backgroundColor: Color(0xffFDCF09),
-                                            child: CircleAvatar(
-                                              radius: 18,
-                                              backgroundImage: AssetImage(
-                                                  '${Story[index]['imgAccount']}'),
-                                            ),
-                                          )),
-                                      index == 0
-                                          ? Container(
-                                              margin:
-                                                  EdgeInsets.only(bottom: 8),
-                                              child: CircleAvatar(
-                                                  child: IconButton(
-                                                      onPressed: () {},
-                                                      icon: Icon(Icons.add))),
-                                            )
-                                          : Container()
-                                    ],
-                                  ))),
-                          Expanded(
-                              flex: 1,
-                              child: Container(
-                                width: 150,
-                                //color: Colors.green,
-                                child: Center(
-                                  child: Text(
-                                    "${Story[index]['name']}",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              )),
-                        ],
-                      ));
-                }),
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: 600,
-              margin: EdgeInsets.only(top: 15),
-              child: Column(
-                children: [
-                  ListTile(
-                    isThreeLine: false,
-                    title: Text("PC Gamer DZ"),
-                    subtitle: Text("Abd Bekoula · 3d · Groups "),
-                    trailing: Icon(Icons.more_horiz),
-                    leading: Container(
-                      width: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage("images/profil6.jpg"),
-                              fit: BoxFit.cover)),
-                      child: null,
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    //color: Colors.red,
-                    height: 100,
-                    child: Center(
-                      child: Text(
-                        "GTX 1660s khadma mampa 6 mois b garonti prix 11 nbi3 wela nbedel m3a RTX 3060 wela 2080ti balaka khtouna ! 😁😁 ",
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child: Text("👍😅🥰 $likenumber ",
-                                style: TextStyle(fontSize: 17))),
-                        Container(
-                            margin: EdgeInsets.only(right: 10),
-                            child: Text(
-                              "46 Comments",
-                              style: TextStyle(fontSize: 17),
-                            )),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 2,
-                    margin: EdgeInsets.only(top: 20),
-                    color: Colors.black12,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        like = Colors.blue;
-                                        likenumber = 46;
-                                      });
-                                    },
-                                    icon: Icon(Icons.thumb_up_outlined),
-                                    color: like,
-                                  ),
-                                  SizedBox(
-                                    width: 0,
-                                  ),
-                                  Text(
-                                    "Like",
-                                    style: TextStyle(fontSize: 18, color: like),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.comment_outlined),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Comment",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.send_outlined),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Send",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 2,
-                    margin: EdgeInsets.only(bottom: 20),
-                    color: Colors.black12,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(5),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.red,
-                              child: CircleAvatar(
-                                radius: 18,
-                                backgroundImage:
-                                    AssetImage('images/profil7.jpg'),
-                              ),
-                            )),
-                        Column(
-                          children: [
-                            Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                width: 230,
-                                height: 145,
-                                padding: EdgeInsets.all(15),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "sidou katalouni ",
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.blue),
-                                      // textAlign: TextAlign.center,
-                                    ),
-                                    Text(
-                                      "Kayen 1080 Ti Ras Ras ida tebRi machya 1ans ta3 ta3din ",
-                                      style: TextStyle(fontSize: 20),
-                                      // textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                )),
-                            Container(
-                              width: 230,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          likeComent = Colors.blue;
-                                        });
-                                      },
-                                      child: Text(
-                                        "Like",
-                                        style: TextStyle(color: likeComent),
-                                      )),
-                                  Text("Reply"),
-                                  Text("4😂😟"),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 7, left: 15),
-                              width: 230,
-                              child: Text("View 4 previous replies... "),
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                    padding: EdgeInsets.all(5),
-                                    child: CircleAvatar(
-                                      radius: 16,
-                                      backgroundColor: Color(0xffFDCF09),
-                                      child: CircleAvatar(
-                                        radius: 18,
-                                        backgroundImage:
-                                            AssetImage('images/profil6.jpg'),
-                                      ),
-                                    )),
-                                Container(
-                                  width: 200,
-                                  height: 60,
-                                  margin: EdgeInsets.only(top: 15),
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300],
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Center(
-                                      child: Text("Hhhh Ak menaytek la 😂")),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 7, left: 15),
-                              width: 230,
-                              child: Text("View 3 previous replies..."),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: 450,
-              margin: EdgeInsets.only(top: 15),
-              child: Column(
-                children: [
-                  ListTile(
-                    isThreeLine: false,
-                    title: Text("Les Bigos Mosta"),
-                    subtitle: Text("Hmida Mosta · 3d · Groups "),
-                    trailing: Icon(Icons.more_horiz),
-                    leading: Container(
-                      width: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage("images/profil.jpeg"),
-                              fit: BoxFit.cover)),
-                      child: null,
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    //color: Colors.red,
-                    height: 100,
-                    child: Center(
-                        child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset("images/profil7.jpg"),
-                        Image.asset("images/profil6.jpg"),
-                        Image.asset("images/profil4.jpg"),
-                        Image.asset("images/profil3.jpg"),
-                      ],
-                    )),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child: Text("👍😅🥰 $likenumber2 ",
-                                style: TextStyle(fontSize: 17))),
-                        Container(
-                            margin: EdgeInsets.only(right: 10),
-                            child: Text(
-                              "8 Comments",
-                              style: TextStyle(fontSize: 17),
-                            )),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 2,
-                    margin: EdgeInsets.only(top: 20),
-                    color: Colors.black12,
-                  ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        like2 = Colors.blue;
-                                        likenumber2 = 118;
-                                      });
-                                    },
-                                    icon: Icon(Icons.thumb_up_outlined),
-                                    color: like2,
-                                  ),
-                                  SizedBox(
-                                    width: 0,
-                                  ),
-                                  Text(
-                                    "Like",
-                                    style:
-                                        TextStyle(fontSize: 18, color: like2),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.comment_outlined),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Comment",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                        Expanded(
-                            flex: 1,
-                            child: Container(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.send_outlined),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    "Send",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 2,
-                    margin: EdgeInsets.only(bottom: 20),
-                    color: Colors.black12,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(5),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.red,
-                              child: CircleAvatar(
-                                radius: 18,
-                                backgroundImage:
-                                    AssetImage('images/profil2.jpg'),
-                              ),
-                            )),
-                        Column(
-                          children: [
-                            Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                width: 230,
-                                height: 110,
-                                padding: EdgeInsets.all(15),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Zak Blem 27",
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.blue),
-                                      // textAlign: TextAlign.center,
-                                    ),
-                                    Text(
-                                      "Sahitah Bigoss 💕👍🙌 !! ",
-                                      style: TextStyle(fontSize: 20),
-                                      // textAlign: TextAlign.center,
-                                    ),
-                                  ],
-                                )),
-                            Container(
-                              width: 230,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          likeComent = Colors.blue;
-                                        });
-                                      },
-                                      child: Text(
-                                        "Like",
-                                        style: TextStyle(color: likeComent),
-                                      )),
-                                  Text("Reply"),
-                                  Text("6 💕👍"),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       //let's add the  bg color
+//       backgroundColor: bgBlack,
+//       //let's add the app bar
+//       appBar: AppBar(
+//         elevation: 0.0,
+//         backgroundColor: mainBlack,
+//         title: Text(
+//           "Facebook",
+//           style: TextStyle(
+//             color: fbBlue,
+//           ),
+//         ),
+//         //Now let's add the action button
+//         actions: [
+//           IconButton(
+//             onPressed: () {},
+//             icon: Icon(Icons.search),
+//           ),
+//           IconButton(
+//             onPressed: () {},
+//             icon: Icon(Icons.menu),
+//           ),
+//         ],
+//       ),
+
+//       //Now let's work on the body
+//       body: SingleChildScrollView(
+//         child: Padding(
+//           padding: EdgeInsets.all(8.0),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.start,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               //First of all we need to creat the post editor
+//               Container(
+//                 width: double.infinity,
+//                 decoration: BoxDecoration(
+//                   color: mainBlack,
+//                   borderRadius: BorderRadius.circular(12.0),
+//                 ),
+//                 child: Padding(
+//                   padding: const EdgeInsets.symmetric(
+//                       horizontal: 8.0, vertical: 10.0),
+//                   child: Column(
+//                     children: [
+//                       Row(
+//                         children: [
+//                           CircleAvatar(
+//                             radius: 25.0,
+//                             backgroundImage: NetworkImage(avatarUrl[0]),
+//                           ),
+//                           SizedBox(
+//                             width: 10.0,
+//                           ),
+//                           Expanded(
+//                             child: TextField(
+//                               style: TextStyle(
+//                                 color: Colors.white,
+//                               ),
+//                               decoration: InputDecoration(
+//                                   contentPadding: EdgeInsets.only(left: 25.0),
+//                                   hintText: "Post something...",
+//                                   filled: true,
+//                                   fillColor: mainGrey,
+//                                   border: OutlineInputBorder(
+//                                     borderRadius: BorderRadius.circular(30.0),
+//                                     borderSide: BorderSide.none,
+//                                   )),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                       SizedBox(
+//                         height: 5.0,
+//                       ),
+//                       Divider(
+//                         color: mainGrey,
+//                         thickness: 1.5,
+//                       ),
+//                       //Now we will create a Row of three button
+//                       Row(
+//                         children: [
+//                           actionButton(
+//                               Icons.live_tv, "Live", Color(0xFFF23E5C)),
+//                           actionButton(
+//                               Icons.image, "Picture", Color(0xFF58C472)),
+//                           actionButton(Icons.insert_emoticon, "Activity",
+//                               Color(0xFFF8C03E)),
+//                         ],
+//                       )
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               //We have finished the Post editor now let's create
+//               //the story's timeline
+//               // let's first create a new file for the custom widget
+//               //now let's buil the container
+//               SizedBox(
+//                 height: 10.0,
+//               ),
+//               Container(
+//                 height: 160.0,
+//                 width: double.infinity,
+//                 child: ListView(
+//                   scrollDirection: Axis.horizontal,
+//                   children: [
+//                     storyTile(avatarUrl[0], storyUrl[0], "Ling chang"),
+//                     storyTile(avatarUrl[1], storyUrl[1], "Ling chang"),
+//                     storyTile(avatarUrl[2], storyUrl[2], "Ling chang"),
+//                   ],
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 20.0,
+//               ),
+//               //Now let's create the news feed
+//               //first we will make the custom container of the feed
+//               //Ok let's test our widget
+//               feedBox(avatarUrl[0], "Doctor code", "6 min",
+//                   "I just wrote something", ""),
+//               feedBox(avatarUrl[1], "Joseph Joestar", "6 min",
+//                   "It's pretty good I like it", storyUrl[2]),
+//               feedBox(avatarUrl[2], "Giorno giovana", "Yesterday",
+//                   "I'm Giorno Giovana and I have a Dream", storyUrl[1]),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
