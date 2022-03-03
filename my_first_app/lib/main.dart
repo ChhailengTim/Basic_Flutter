@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/HomePage.dart';
+import 'package:my_first_app/page.dart';
+import 'package:my_first_app/actionbtn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +19,21 @@ class MyApp extends StatelessWidget {
             "facebook",
             style: TextStyle(color: Colors.blue),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.search),
+              color: Colors.black,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.menu),
+              color: Colors.black,
+            ),
+          ],
           backgroundColor: Colors.white,
         ),
-        body: HomePage(),
+        body: const Home(),
       ),
     );
   }

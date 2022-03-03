@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_app/stories.dart';
+import 'package:my_first_app/feed.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,66 +10,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var index = 0;
-  var color = Colors.blue;
-  late TabController myControler;
-  var like1 = Colors.black;
-  var like2 = Colors.black;
-  var likeComment = Colors.black;
-  var likenumber1 = 45;
-  var likenumber2 = 100;
-  var likegroups = 10;
-
-  // List Story = [
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   },
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   },
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   },
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   },
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   },
-  //   {
-  //     "imageAccount": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "imagebackgroud": Image.network(
-  //         "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-  //     "name": "Create story",
-  //     "Colors": Colors.white,
-  //   }
-  // ];
+  List<String> avatarURL = [
+    "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278",
+    "https://scontent.fpnh8-1.fna.fbcdn.net/v/t39.30808-1/244645332_2126546250854357_5312894312562182139_n.jpg?stp=dst-jpg_p148x148&_nc_cat=105&ccb=1-5&_nc_sid=1eb0c7&_nc_eui2=AeEjZ-VkGxL9m7-Up4IRLbI4WFLc_cCd46FYUtz9wJ3joezNcqQJKYBjqjsdp9GnWliUTqiszPZxPrMTg8k5TcNU&_nc_ohc=aYQV69m3q1UAX9EDVYW&_nc_ht=scontent.fpnh8-1.fna&oh=00_AT8m4nnua5Za_TgJeLM0WdgoxHrvr4-mFh1wbHwAmblAUQ&oe=62266FF6",
+  ];
+  List<String> storyURL = [
+    "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278",
+    "https://scontent.fpnh8-1.fna.fbcdn.net/v/t39.30808-1/244645332_2126546250854357_5312894312562182139_n.jpg?stp=dst-jpg_p148x148&_nc_cat=105&ccb=1-5&_nc_sid=1eb0c7&_nc_eui2=AeEjZ-VkGxL9m7-Up4IRLbI4WFLc_cCd46FYUtz9wJ3joezNcqQJKYBjqjsdp9GnWliUTqiszPZxPrMTg8k5TcNU&_nc_ohc=aYQV69m3q1UAX9EDVYW&_nc_ht=scontent.fpnh8-1.fna&oh=00_AT8m4nnua5Za_TgJeLM0WdgoxHrvr4-mFh1wbHwAmblAUQ&oe=62266FF6",
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,12 +40,11 @@ class _HomeState extends State<Home> {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(left: 15),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             radius: 25,
                             child: CircleAvatar(
                               radius: 25,
-                              backgroundImage: NetworkImage(
-                                  "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
+                              backgroundImage: NetworkImage(avatarURL[0]),
                             ),
                           ),
                         ),
@@ -196,314 +145,41 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            SizedBox(
+              height: 160.0,
+              width: double.infinity,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  storiestile(avatarURL[0], storyURL[0], "Chhaileng Tim"),
+                  storiestile(avatarURL[0], storyURL[0], "Leakena In"),
+                  storiestile(avatarURL[0], storyURL[0], "Meng Long"),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            feedBox(
+              avatarURL[0],
+              "Chhaileng Tim",
+              "Just now",
+              "Hello World",
+              "",
+            ),
+            feedBox(
+              avatarURL[0],
+              "Chhaileng Tim",
+              "Just now",
+              "Hello World",
+              avatarURL[0],
+            ),
           ],
         ),
       ),
     );
-    // ignore: dead_code
-    // Container(
-    //   color: Colors.white,
-    //   width: double.infinity,
-    //   height: 270,
-    //   margin: const EdgeInsets.only(top: 14),
-    //   child: ListView(
-    //     scrollDirection: Axis.horizontal,
-    //     children: List.generate(
-    //       10,
-    //       (int index) {
-    //         print(index);
-    //         return Card(
-    //           margin: const EdgeInsets.all(10),
-    //           shadowColor: Colors.black,
-    //           elevation: 2,
-    //           shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.circular(16.0),
-    //           ),
-    //           color: Story[index]['Colors'],
-    //           child: Column(
-    //             children: [
-    //               Expanded(
-    //                 flex: 4,
-    //                 child: Container(
-    //                   width: 150,
-    //                   decoration: BoxDecoration(
-    //                       borderRadius: const BorderRadius.only(
-    //                           topLeft: Radius.circular(15),
-    //                           topRight: Radius.circular(15)),
-    //                       image: DecorationImage(
-    //                           image: AssetImage(
-    //                               "${Story[index]['imagebackground']}"),
-    //                           fit: BoxFit.cover)),
-    //                   child: Column(
-    //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                     children: [
-    //                       Container(
-    //                           margin: const EdgeInsets.only(top: 8, right: 85),
-    //                           child: CircleAvatar(
-    //                             radius: 16,
-    //                             backgroundColor: const Color(0xffFDCF09),
-    //                             child: CircleAvatar(
-    //                               radius: 18,
-    //                               backgroundImage: AssetImage(
-    //                                   '${Story[index]['imageAccount']}'),
-    //                             ),
-    //                           )),
-    //                       index == 0
-    //                           ? Container(
-    //                               margin: const EdgeInsets.only(
-    //                                 bottom: 8,
-    //                               ),
-    //                               child: CircleAvatar(
-    //                                 child: IconButton(
-    //                                   onPressed: () {},
-    //                                   icon: const Icon(Icons.add),
-    //                                 ),
-    //                               ),
-    //                             )
-    //                           : Container()
-    //                     ],
-    //                   ),
-    //                 ),
-    //               ),
-    //               Expanded(
-    //                 flex: 1,
-    //                 child: SizedBox(
-    //                   width: 150,
-    //                   //color: Colors.green,
-    //                   child: Center(
-    //                     child: Text(
-    //                       "${Story[index]['name']}",
-    //                       textAlign: TextAlign.center,
-    //                     ),
-    //                   ),
-    //                 ),
-    //               ),
-    //             ],
-    //           ),
-    //         );
-    //       },
-    //     ),
-    //   ),
-    // );
-    // Container(
-    //   color: Colors.white,
-    //   width: double.infinity,
-    //   height: 600,
-    //   margin: const EdgeInsets.only(
-    //     top: 15,
-    //   ),
-    //   child: Column(
-    //     children: [
-    //       ListTile(
-    //         isThreeLine: false,
-    //         title: const Text("Cambodia Store"),
-    //         subtitle: const Text("Just now"),
-    //         trailing: const Icon(Icons.more_horiz),
-    //         leading: Container(
-    //           width: 50,
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(15),
-    //             image: DecorationImage(
-    //               image: AssetImage('imageAccount'),
-    //               fit: BoxFit.cover,
-    //             ),
-    //           ),
-    //           child: null,
-    //         ),
-    //       ),
-    //       const SizedBox(
-    //         width: double.infinity,
-    //         height: 100,
-    //         child: Center(
-    //           child: Text(
-    //             "Welcome to Cambodia Kingdom of Wonder",
-    //             style: TextStyle(fontSize: 20),
-    //             textAlign: TextAlign.center,
-    //           ),
-    //         ),
-    //       ),
-    //       Container(
-    //         margin: const EdgeInsets.only(
-    //           top: 10,
-    //         ),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             Container(
-    //               margin: const EdgeInsets.only(
-    //                 left: 10,
-    //               ),
-    //               child: Text(
-    //                 "👍😂😍 $likenumber1",
-    //                 style: const TextStyle(fontSize: 17),
-    //               ),
-    //             ),
-    //             Container(
-    //               margin: const EdgeInsets.only(
-    //                 right: 10,
-    //               ),
-    //               child: const Text(
-    //                 "89 Comments",
-    //                 style: TextStyle(fontSize: 17),
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //       Container(
-    //         width: double.infinity,
-    //         height: 2,
-    //         margin: const EdgeInsets.only(
-    //           top: 20,
-    //         ),
-    //         color: Colors.black12,
-    //       ),
-    //       Row(
-    //         children: [
-    //           Expanded(
-    //             flex: 1,
-    //             child: SizedBox(
-    //               height: 45,
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.center,
-    //                 children: [
-    //                   IconButton(
-    //                     onPressed: () {
-    //                       setState(
-    //                         () {
-    //                           like1 = Colors.blue;
-    //                           likenumber1 = 46;
-    //                         },
-    //                       );
-    //                     },
-    //                     icon: const Icon(Icons.thumb_up_alt_outlined),
-    //                     color: like1,
-    //                   ),
-    //                   const SizedBox(
-    //                     width: 0,
-    //                   ),
-    //                   Text(
-    //                     "Like",
-    //                     style: TextStyle(fontSize: 18, color: like1),
-    //                   )
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //           Expanded(
-    //             flex: 1,
-    //             child: SizedBox(
-    //               height: 45,
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.center,
-    //                 children: const [
-    //                   Icon(Icons.comment_outlined),
-    //                   SizedBox(
-    //                     width: 10,
-    //                   ),
-    //                   Text(
-    //                     "Comment",
-    //                     style: TextStyle(fontSize: 18),
-    //                   )
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //           Expanded(
-    //             flex: 1,
-    //             child: SizedBox(
-    //               height: 45,
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.center,
-    //                 children: const [
-    //                   Icon(Icons.send_outlined),
-    //                   SizedBox(
-    //                     width: 10,
-    //                   ),
-    //                   Text(
-    //                     "Send",
-    //                     style: TextStyle(fontSize: 18),
-    //                   )
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ],
-    //   ),
-    // );
-    // Container(
-    //   width: double.infinity,
-    //   height: 2,
-    //   margin: const EdgeInsets.only(bottom: 20),
-    //   color: Colors.black12,
-    // );
-    // Container(
-    //   padding: const EdgeInsets.all(10),
-    //   child: Row(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Container(
-    //           padding: const EdgeInsets.all(5),
-    //           child: const CircleAvatar(
-    //             backgroundColor: Colors.red,
-    //             child: CircleAvatar(
-    //               radius: 18,
-    //               backgroundImage: NetworkImage(
-    //                   "https://scontent.fpnh4-1.fna.fbcdn.net/v/t39.30808-1/271853594_3212353095756512_4030361620936344763_n.jpg?stp=c0.0.320.320a_dst-jpg_p320x320&_nc_cat=105&ccb=1-5&_nc_sid=7206a8&_nc_eui2=AeF6UDlAHPB_Gaq44JE6wiEMovGAbjbOyw2i8YBuNs7LDQc6liZcizBgV6yPaga-X7B9TWx5ZoEVRmULgXLGPWHH&_nc_ohc=DDOkjQf-A2gAX88uYFb&_nc_ht=scontent.fpnh4-1.fna&oh=00_AT-jLcNLwOJmVnRatH1og3QRjf6-ZvDVTc4Jw2cPiOrfCg&oe=6222E278"),
-    //             ),
-    //           )),
-    //       Column(
-    //         children: [
-    //           Container(
-    //               decoration: BoxDecoration(
-    //                 color: Colors.grey[300],
-    //                 borderRadius: BorderRadius.circular(20),
-    //               ),
-    //               width: 230,
-    //               height: 110,
-    //               padding: const EdgeInsets.all(15),
-    //               child: Column(
-    //                 mainAxisAlignment: MainAxisAlignment.start,
-    //                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                 children: const [
-    //                   Text(
-    //                     "Zak Blem 27",
-    //                     style: TextStyle(fontSize: 20, color: Colors.blue),
-    //                     // textAlign: TextAlign.center,
-    //                   ),
-    //                   Text(
-    //                     "Sahitah Bigoss 💕👍🙌 !! ",
-    //                     style: TextStyle(fontSize: 20),
-    //                     // textAlign: TextAlign.center,
-    //                   ),
-    //                 ],
-    //               )),
-    //           SizedBox(
-    //             width: 230,
-    //             child: Row(
-    //               mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //               children: [
-    //                 InkWell(
-    //                     onTap: () {
-    //                       setState(() {
-    //                         likeComment = Colors.blue;
-    //                       });
-    //                     },
-    //                     child: Text(
-    //                       "Like",
-    //                       style: TextStyle(color: likeComment),
-    //                     )),
-    //                 const Text("Reply"),
-    //                 const Text("6 💕👍"),
-    //               ],
-    //             ),
-    //           ),
-    //         ],
-    //       )
-    //     ],
-    //   ),
-    // );
   }
 }
