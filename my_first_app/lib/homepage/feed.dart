@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/actionbtn.dart';
+import 'package:my_first_app/homepage/actionbtn.dart';
+
+import 'actionbtn.dart';
 
 Widget feedBox(String avatarUrl, String userName, String date,
     String contentText, String contentImg) {
