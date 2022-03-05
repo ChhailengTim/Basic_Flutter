@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.message),
               color: Colors.black,
             ),
           ],
