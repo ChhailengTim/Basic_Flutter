@@ -7,9 +7,10 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  Future<String> someFutureFunction(){
-    Future<String>data=Future.delayed(
-      Duration(seconds: 2),()=>"Latest News",
+  Future<String> someFutureFunction() {
+    Future<String> data = Future.delayed(
+      Duration(seconds: 2),
+      () => "Latest News",
     );
     return data;
   }
@@ -17,20 +18,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: someFutureFunction(),
-        builder: (context,snapshot){
-          if(snapshot.connectionState==ConnectionState.done){
+    return FutureBuilder<String>(
+        future: someFutureFunction(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return Container(
               child: Text(snapshot.data),
-            );
-          }
-          else{
-            return Center(
+              );
+          } else {
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
-    });
+        }
+        );
   }
 }
-
