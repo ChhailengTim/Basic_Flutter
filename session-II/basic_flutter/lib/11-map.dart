@@ -1,28 +1,26 @@
-class Product {
+import 'dart:convert';
+
+class Photo {
+  int albumId;
   int id;
-  String name;
-  List<Image> images;
+  String title;
+  String url;
 
-  Product({required this.id, required this.name, required this.images});
+  Photo({
+    required this.albumId,
+    required this.id,
+    required this.title,
+    required this.url,
+  });
 
-  factory Product.fromMap(Map<String, dynamic> json) => Product(
+  factory Photo.fromMap(Map<String, dynamic> json) => Photo(
+        albumId: json['albumid'],
         id: json['id'],
-        name: json['name'],
-        images: List<Image>.from(json['image'].map((x) => Image.fromMap(x))),
+        title: json['title'],
+        url: json['url'],
       );
 }
 
-class Image {
-  int id;
-  String imageName;
-
-  Image({
-    required this.id,
-    required this.imageName,
-  });
-
-  factory Image.fromMap(Map<String, dynamic> json) => Image(
-        id: json['id'],
-        imageName: json['imageName'],
-      );
+List<Photo> photoFromJson(String str) {
+  return List<Photo>.from(json.decode(str).map((x) => Photo.fromMap(x)));
 }
