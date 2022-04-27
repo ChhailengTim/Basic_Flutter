@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:deeplinks/function/getSharepreferenceData.dart';
 import 'package:get/get_connect.dart';
-import 'package:global_configuration/global_configuration.dart';
 
 class ErrorModel {
   final int? statusCode;
@@ -17,22 +15,28 @@ enum METHODE {
 }
 
 class ApiBaseHelper extends GetConnect {
-  final String? baseurl = "${GlobalConfiguration().get('base_url')}";
+  final String? baseurl = "https://api.coindesk.com";
 
-  Future<dynamic> onNetworkRequesting(
-      {required String url,
-      Map<String, String>? header,
-      Map<String, dynamic>? body,
-      required METHODE? methode,
-      required bool isAuthorize,
-      bool isConvertToByte = false}) async {
-    final _token = await LocalData.getCurrentUser();
-    final fullUrl = baseurl! + url;
+  Future<dynamic> onNetworkRequesting({
+    required String url,
+    String? fullUrls,
+    Map<String, String>? header,
+    Map<String, dynamic>? body,
+    required METHODE? methode,
+    required bool isAuthorize,
+    bool isConvertToByte = false,
+  }) async {
+    const token =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NDA0OTc1LCJpYXQiOjE2NDY4MDAxNzUsImp0aSI6IjIzNGViZjMwMTU0YTRjZGQ4MmFlNGIxMzU4NmY2YWNlIiwidXNlcl9pZCI6OTR9.Qg0TjHTMJ35FhPFkXsQEuX9Lln2uj4FNs6ujW3VFlmI";
+
+    final fullUrl = fullUrls ??
+        baseurl! + url; //http://178.128.110.188/api/v1/customer-address/get/
     Map<String, String> _header = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': isAuthorize ? 'Bearer $_token' : ''
+      'Authorization': isAuthorize ? 'Bearer $token' : ""
     };
+
     try {
       switch (methode) {
         case METHODE.get:
@@ -40,20 +44,20 @@ class ApiBaseHelper extends GetConnect {
           return _returnResponse(response, isConvertToByte);
         case METHODE.post:
           if (body != null) {
-            final response =
-                await post(fullUrl, json.encode(body), headers: header);
+            final response = await post(fullUrl, json.encode(body),
+                headers: header ?? _header);
             return _returnResponse(response, isConvertToByte);
           }
           return Future.error(
               const ErrorModel(bodyString: 'Body must be included'));
 
         case METHODE.delete:
-          final response = await delete(fullUrl, headers: header);
+          final response = await delete(fullUrl, headers: header ?? _header);
           return _returnResponse(response, isConvertToByte);
         case METHODE.update:
           if (body != null) {
-            final response =
-                await put(fullUrl, json.encode(body), headers: header);
+            final response = await put(fullUrl, json.encode(body),
+                headers: header ?? _header);
             return _returnResponse(response, isConvertToByte);
           }
           return Future.error(
