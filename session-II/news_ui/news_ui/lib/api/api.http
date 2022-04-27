@@ -1,0 +1,7 @@
+@baseUrl = https://www.themoviedb.org/
+
+###
+GET https://api.imgflip.com/get_memes
+Accept: application/json
+Content-Type: application/json
+# Authorization: Bearer {{token}}
